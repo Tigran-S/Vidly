@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  padding: 0 0 0 0;
+}
+.navbar {
+  margin-bottom: 30px;
+}
+.form-group {
+  width: 50%;
+}
+.form {
+  margin-left: 10%;
+}
