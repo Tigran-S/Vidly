@@ -6,7 +6,13 @@ import { saveMovie } from "./../services/fakeMovieService";
 import Select from "./common/select";
 import { getGenres } from "./../services/fakeGenreService";
 import { useNavigate } from "react-router-dom";
-
+const schema = {
+  _id: Joi.string(),
+  title: Joi.string().required().label("Title"),
+  genre: Joi.string().required().label("Genre"),
+  numberInStock: Joi.number().min(0).max(100).label("Number in Stock"),
+  dailyRentalRate: Joi.number().min(0).max(10).label("Rate"),
+};
 const NewMovie = () => {
   const [login, setLogin] = useState({
     title: "",
@@ -16,13 +22,7 @@ const NewMovie = () => {
   });
   const [errors, setErrors] = useState({});
   const [genres, setGenres] = useState([]);
-  const schema = {
-    _id: Joi.string(),
-    title: Joi.string().required().label("Title"),
-    genre: Joi.string().required().label("Genre"),
-    numberInStock: Joi.number().min(0).max(100).label("Number in Stock"),
-    dailyRentalRate: Joi.number().min(0).max(10).label("Rate"),
-  };
+
   const navigate = useNavigate();
   const doSubmit = () => {
     const newMovie = { ...login };

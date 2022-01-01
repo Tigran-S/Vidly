@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import Joi from "joi-browser";
 import Input from "./common/input";
 import { validate, handleChange, handleSubmit } from "./common/form";
+const schema = {
+  username: Joi.string().email().required().label("Username"),
+  password: Joi.string().min(5).required().label("Password"),
+  name: Joi.string().required().label("Name"),
+};
 const RegisterForm = () => {
   const [register, setRegister] = useState({
     username: "",
@@ -9,11 +14,6 @@ const RegisterForm = () => {
     name: "",
   });
   const [errors, setErrors] = useState({});
-  const schema = {
-    username: Joi.string().email().required().label("Username"),
-    password: Joi.string().min(5).required().label("Password"),
-    name: Joi.string().required().label("Name"),
-  };
 
   const doSubmit = () => {
     console.log("Registered");

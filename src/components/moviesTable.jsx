@@ -3,14 +3,13 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import Like from "./common/like";
 
-const MoviesTable = (props) => {
+const MoviesTable = ({ movies, onDelete, onSort, sortColumn }) => {
   const a = [
     { header: "Title", name: "title" },
     { header: "Genre", name: "genre" },
     { header: "Stock", name: "numberInStock" },
     { header: "Rate", name: "dailyRentalRate" },
   ];
-  const { movies, onDelete, onSort, sortColumn } = props;
   const headerSymbol = (el) => {
     if (sortColumn.clicked) {
       if (sortColumn.path === el.name && !sortColumn.order) {

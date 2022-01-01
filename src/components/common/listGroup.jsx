@@ -1,30 +1,30 @@
 import React from "react";
 
-const ListGroup = (props) => {
+const ListGroup = ({ currentGenre, onGenreSelect, genres }) => {
   return (
     <ul className="list-group">
       <li
         className={
-          props.currentGenre === "All Genres"
+          currentGenre === "All Genres"
             ? "list-group-item active"
             : "list-group-item"
         }
         style={{ cursor: "pointer" }}
-        onClick={() => props.onGenreSelect(undefined)}
+        onClick={() => onGenreSelect(undefined)}
       >
         All Genres
       </li>
-      {props.genres.map((genre) => {
+      {genres.map((genre) => {
         return (
           <li
             className={
-              genre.name === props.currentGenre
+              genre.name === currentGenre
                 ? "list-group-item active"
                 : "list-group-item"
             }
             key={genre._id}
             style={{ cursor: "pointer" }}
-            onClick={() => props.onGenreSelect(genre.name)}
+            onClick={() => onGenreSelect(genre.name)}
           >
             {genre.name}
           </li>

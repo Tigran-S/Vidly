@@ -3,13 +3,14 @@ import Joi from "joi-browser";
 import Input from "./common/input";
 import { validate, handleChange, handleSubmit } from "./common/form";
 
+const schema = {
+  username: Joi.string().required().label("Username"),
+  password: Joi.string().required().label("Password"),
+};
+
 const LoginForm = () => {
   const [login, setLogin] = useState({ username: "", password: "" });
   const [errors, setErrors] = useState({});
-  const schema = {
-    username: Joi.string().required().label("Username"),
-    password: Joi.string().required().label("Password"),
-  };
 
   const doSubmit = () => {
     console.log("Submitted");
